@@ -15,13 +15,13 @@
 		F621A2E6216FBF5A001EFC72 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621A2E5216FBF5A001EFC72 /* Observable.swift */; };
 		F621A2E8216FBF6F001EFC72 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621A2E7216FBF6F001EFC72 /* Injectable.swift */; };
 		F621A2EA216FBF97001EFC72 /* ArrayTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621A2E9216FBF97001EFC72 /* ArrayTableViewDataSource.swift */; };
+		F621A2EC216FC0BC001EFC72 /* InjectableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621A2EB216FC0BC001EFC72 /* InjectableTests.swift */; };
 		F6F35398216BCAA0005B4211 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F35397216BCAA0005B4211 /* AppDelegate.swift */; };
 		F6F3539D216BCAA0005B4211 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6F3539B216BCAA0005B4211 /* Main.storyboard */; };
 		F6F3539F216BCAA1005B4211 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6F3539E216BCAA1005B4211 /* Assets.xcassets */; };
 		F6F353A2216BCAA1005B4211 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6F353A0216BCAA1005B4211 /* LaunchScreen.storyboard */; };
 		F6F353AD216BCAA1005B4211 /* ContactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F353AC216BCAA1005B4211 /* ContactsTests.swift */; };
 		F6F353C9216BCC47005B4211 /* Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F353C0216BCC46005B4211 /* Library.framework */; };
-		F6F353D0216BCC47005B4211 /* LibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F353CF216BCC47005B4211 /* LibraryTests.swift */; };
 		F6F353D2216BCC47005B4211 /* Library.h in Headers */ = {isa = PBXBuildFile; fileRef = F6F353C2216BCC47005B4211 /* Library.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F6F353D5216BCC47005B4211 /* Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F353C0216BCC46005B4211 /* Library.framework */; };
 		F6F353D6216BCC47005B4211 /* Library.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F6F353C0216BCC46005B4211 /* Library.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -82,6 +82,7 @@
 		F621A2E5216FBF5A001EFC72 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		F621A2E7216FBF6F001EFC72 /* Injectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injectable.swift; sourceTree = "<group>"; };
 		F621A2E9216FBF97001EFC72 /* ArrayTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayTableViewDataSource.swift; sourceTree = "<group>"; };
+		F621A2EB216FC0BC001EFC72 /* InjectableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectableTests.swift; sourceTree = "<group>"; };
 		F6F35394216BCAA0005B4211 /* ContactsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6F35397216BCAA0005B4211 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6F3539C216BCAA0005B4211 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 		F6F353C2216BCC47005B4211 /* Library.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Library.h; sourceTree = "<group>"; };
 		F6F353C3216BCC47005B4211 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6F353C8216BCC47005B4211 /* LibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F6F353CF216BCC47005B4211 /* LibraryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTests.swift; sourceTree = "<group>"; };
 		F6F353D1216BCC47005B4211 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6F353E0216BCC91005B4211 /* ContactsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -222,8 +222,8 @@
 		F6F353CE216BCC47005B4211 /* LibraryTests */ = {
 			isa = PBXGroup;
 			children = (
-				F6F353CF216BCC47005B4211 /* LibraryTests.swift */,
 				F6F353D1216BCC47005B4211 /* Info.plist */,
+				F621A2EB216FC0BC001EFC72 /* InjectableTests.swift */,
 			);
 			path = LibraryTests;
 			sourceTree = "<group>";
@@ -442,7 +442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6F353D0216BCC47005B4211 /* LibraryTests.swift in Sources */,
+				F621A2EC216FC0BC001EFC72 /* InjectableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
