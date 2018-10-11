@@ -10,6 +10,11 @@
 		CC3C7955171C6CA384FA9179 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C7D26C8B9891030F51479 /* ContactListViewController.swift */; };
 		CC3C7A73F6C729F8D7DD7ADC /* ContactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C7A6454B89BF710952651 /* ContactListViewModel.swift */; };
 		CC3C7F300CF747A5F969FA8E /* ContactsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C7AFD37B52808E70090C2 /* ContactsRepository.swift */; };
+		F621A2E2216FBEF8001EFC72 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621A2E1216FBEF8001EFC72 /* ViewModel.swift */; };
+		F621A2E4216FBF3C001EFC72 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621A2E3216FBF3C001EFC72 /* Result.swift */; };
+		F621A2E6216FBF5A001EFC72 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621A2E5216FBF5A001EFC72 /* Observable.swift */; };
+		F621A2E8216FBF6F001EFC72 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621A2E7216FBF6F001EFC72 /* Injectable.swift */; };
+		F621A2EA216FBF97001EFC72 /* ArrayTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621A2E9216FBF97001EFC72 /* ArrayTableViewDataSource.swift */; };
 		F6F35398216BCAA0005B4211 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F35397216BCAA0005B4211 /* AppDelegate.swift */; };
 		F6F3539D216BCAA0005B4211 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6F3539B216BCAA0005B4211 /* Main.storyboard */; };
 		F6F3539F216BCAA1005B4211 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6F3539E216BCAA1005B4211 /* Assets.xcassets */; };
@@ -20,7 +25,6 @@
 		F6F353D2216BCC47005B4211 /* Library.h in Headers */ = {isa = PBXBuildFile; fileRef = F6F353C2216BCC47005B4211 /* Library.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F6F353D5216BCC47005B4211 /* Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F353C0216BCC46005B4211 /* Library.framework */; };
 		F6F353D6216BCC47005B4211 /* Library.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F6F353C0216BCC46005B4211 /* Library.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F6F353DE216BCC52005B4211 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F353B8216BCB47005B4211 /* Library.swift */; };
 		F6F353E1216BCC91005B4211 /* ContactsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F353E0216BCC91005B4211 /* ContactsController.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +77,11 @@
 		CC3C7A6454B89BF710952651 /* ContactListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListViewModel.swift; sourceTree = "<group>"; };
 		CC3C7AFD37B52808E70090C2 /* ContactsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsRepository.swift; sourceTree = "<group>"; };
 		CC3C7D26C8B9891030F51479 /* ContactListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
+		F621A2E1216FBEF8001EFC72 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		F621A2E3216FBF3C001EFC72 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		F621A2E5216FBF5A001EFC72 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		F621A2E7216FBF6F001EFC72 /* Injectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injectable.swift; sourceTree = "<group>"; };
+		F621A2E9216FBF97001EFC72 /* ArrayTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayTableViewDataSource.swift; sourceTree = "<group>"; };
 		F6F35394216BCAA0005B4211 /* ContactsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6F35397216BCAA0005B4211 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6F3539C216BCAA0005B4211 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,7 +91,6 @@
 		F6F353A8216BCAA1005B4211 /* ContactsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6F353AC216BCAA1005B4211 /* ContactsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTests.swift; sourceTree = "<group>"; };
 		F6F353AE216BCAA1005B4211 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F6F353B8216BCB47005B4211 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		F6F353C0216BCC46005B4211 /* Library.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Library.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6F353C2216BCC47005B4211 /* Library.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Library.h; sourceTree = "<group>"; };
 		F6F353C3216BCC47005B4211 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -200,9 +208,13 @@
 		F6F353C1216BCC47005B4211 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				F6F353B8216BCB47005B4211 /* Library.swift */,
 				F6F353C2216BCC47005B4211 /* Library.h */,
 				F6F353C3216BCC47005B4211 /* Info.plist */,
+				F621A2E1216FBEF8001EFC72 /* ViewModel.swift */,
+				F621A2E3216FBF3C001EFC72 /* Result.swift */,
+				F621A2E5216FBF5A001EFC72 /* Observable.swift */,
+				F621A2E7216FBF6F001EFC72 /* Injectable.swift */,
+				F621A2E9216FBF97001EFC72 /* ArrayTableViewDataSource.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -418,7 +430,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6F353DE216BCC52005B4211 /* Library.swift in Sources */,
+				F621A2E6216FBF5A001EFC72 /* Observable.swift in Sources */,
+				F621A2E4216FBF3C001EFC72 /* Result.swift in Sources */,
+				F621A2E2216FBEF8001EFC72 /* ViewModel.swift in Sources */,
+				F621A2E8216FBF6F001EFC72 /* Injectable.swift in Sources */,
+				F621A2EA216FBF97001EFC72 /* ArrayTableViewDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

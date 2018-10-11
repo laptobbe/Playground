@@ -7,9 +7,7 @@ import Foundation
 import Library
 import Contacts
 
-final class ContactListViewModel : ViewModel, Injectable {
-    static let id: String = UUID().uuidString
-
+final class ContactListViewModel : ViewModel {
     let contactsRepository:ContactsRepository = Injection.singleton()
 
     lazy var contacts:Observable<[CNContact]> = {
