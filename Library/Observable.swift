@@ -75,7 +75,29 @@ public class Observable<Type> {
         }
         return Unobserver(unobserve:{ self.unobserve(id: id) })
     }
-    
+
+    public func map<NewType>(mapper:@escaping (Type) -> NewType) -> (Observable<NewType>, Unobserver) {
+        let new = Observable<NewType>()
+        let unobserver = self.observe({ (value) in
+            new.value = mapper(value)
+        }, errorObserver: { error in
+            new.error = error
+        })
+        return (new, unobserver)
+    }
+
+    public func mapFilter<NewType>(mapper:@escaping (Type) -> NewType?) -> (Observable<NewType>, Unobserver) {
+        let new = Observable<NewType>()
+        let unobserver = self.observe({ (value) in
+            if let mapped = mapper(value) {
+                new.value = mapped
+            }
+        }, errorObserver: { error in
+            new.error = error
+        })
+        return (new, unobserver)
+    }
+
     private func unobserve(id:String) {
         syncQueue.sync {
             observers.removeValue(forKey: id)

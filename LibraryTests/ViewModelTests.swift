@@ -138,4 +138,24 @@ class ViewModelTests : XCTestCase {
 
         wait(for: [expectation], timeout: 0.1)
     }
+
+    func testMapFilterObservableValue() {
+        let expectation = XCTestExpectation()
+        let observable = Observable<Bool>(value: false)
+        let viewModel = ViewModel()
+
+        viewModel.mapFilterObservable(observable: observable) { (type: Bool) -> (String?) in
+            return type == true ? "true" : nil
+        }.observe({ (value: String) in
+            if(value == "true") {
+                expectation.fulfill()
+            } else if(value == "false") {
+                XCTFail()
+            }
+        })
+
+        observable.value = true
+
+        wait(for: [expectation], timeout: 10.0)
+    }
 }

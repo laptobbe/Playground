@@ -21,12 +21,15 @@ open class ViewModel : Injectable {
 
     @discardableResult
     public func mapObservable<Type, NewType>(observable:Observable<Type>, mapper:@escaping (Type)->(NewType)) -> Observable<NewType> {
-        let new = Observable<NewType>()
-        remember(observable.observe({ (value) in
-            new.value = mapper(value)
-        }, errorObserver: { error in
-            new.error = error
-        }))
+        let (new, unobserver) = observable.map(mapper: mapper)
+        remember(unobserver)
+        return new
+    }
+
+    @discardableResult
+    public func mapFilterObservable<Type, NewType>(observable:Observable<Type>, mapper:@escaping (Type)->(NewType?)) -> Observable<NewType> {
+        let (new, unobserver) = observable.mapFilter(mapper: mapper)
+        remember(unobserver)
         return new
     }
 

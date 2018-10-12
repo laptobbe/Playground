@@ -6,8 +6,8 @@
 import XCTest
 @testable import Library
 
-class ObservableTests : XCTestCase {
-    private enum TestError : Error {
+class ObservableTests: XCTestCase {
+    private enum TestError: Error {
         case AnError
     }
 
@@ -124,7 +124,7 @@ class ObservableTests : XCTestCase {
         let observable = Observable<Bool>(value: true)
         observable.value = false
         observable.observe({ (type: Bool) in
-            if(type == false) {
+            if (type == false) {
                 valueExpectation.fulfill()
             }
         }, errorObserver: { error in
@@ -132,5 +132,93 @@ class ObservableTests : XCTestCase {
         })
 
         wait(for: [valueExpectation], timeout: 10.0)
+    }
+
+    func testMapValue() {
+        let expectation = XCTestExpectation()
+        let observable = Observable<Bool>(value: true)
+
+        let (new, _) = observable.map { (type: Bool) -> (String) in
+            return "\(type)"
+        }
+        new.observe({ (value: String) in
+            if (value == "true") {
+                expectation.fulfill()
+            }
+        })
+
+        wait(for: [expectation], timeout: 10.0)
+    }
+
+    func testMapErrorPassThough() {
+        let expectation = XCTestExpectation()
+        let observable = Observable<Bool>()
+
+        let (new, _) = observable.map { (type: Bool) -> (String) in
+            return "\(type)"
+        }
+        new.observe({ (type: String) in
+            XCTFail()
+        }, errorObserver: { error in
+            if case TestError.AnError = error {
+                expectation.fulfill()
+            }
+        })
+        observable.error = TestError.AnError
+
+        wait(for: [expectation], timeout: 0.1)
+    }
+
+    func testMapFilterValue() {
+        let expectation = XCTestExpectation()
+        let observable = Observable<Bool>(value: true)
+
+        let (new, _) = observable.mapFilter { (type: Bool) -> (String?) in
+            return "\(type)"
+        }
+        new.observe({ (value: String) in
+            if (value == "true") {
+                expectation.fulfill()
+            }
+        })
+
+        wait(for: [expectation], timeout: 10.0)
+    }
+
+    func testMapFilter() {
+        let expectation = XCTestExpectation()
+        let observable = Observable<Bool>(value: true)
+
+        let (new, _) = observable.mapFilter { (type: Bool) -> (String?) in
+            return type == false ? "false" : nil
+        }
+        new.observe({ (value: String) in
+            if (value == "false") {
+                expectation.fulfill()
+            }
+        })
+
+        observable.value = false
+
+        wait(for: [expectation], timeout: 0.1)
+    }
+
+    func testMapFilterErrorPassThough() {
+        let expectation = XCTestExpectation()
+        let observable = Observable<Bool>()
+
+        let (new, _) = observable.mapFilter { (type: Bool) -> (String) in
+            return "\(type)"
+        }
+        new.observe({ (type: String) in
+            XCTFail()
+        }, errorObserver: { error in
+            if case TestError.AnError = error {
+                expectation.fulfill()
+            }
+        })
+        observable.error = TestError.AnError
+
+        wait(for: [expectation], timeout: 0.1)
     }
 }
