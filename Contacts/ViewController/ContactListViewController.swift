@@ -24,6 +24,7 @@ class ContactListViewController: UIViewController {
 
     private func setupTableView() {
         self.tableView.dataSource = dataSource
+        self.tableView.delegate = dataSource
     }
 
     private func setupViewModel() {
@@ -41,6 +42,10 @@ class ContactsListTableViewSource : ArrayTableViewDataSource<CNContact> {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = element.givenName
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectElement element: CNContact, atIndexPath indexPath: IndexPath) {
+
     }
 }
 
