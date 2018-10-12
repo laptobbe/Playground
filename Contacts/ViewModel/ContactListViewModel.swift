@@ -8,7 +8,7 @@ import Library
 import Contacts
 
 final class ContactListViewModel : ViewModel {
-    let contactsRepository:ContactsRepository = Injection.singleton()
+    var contactsRepository:ContactsRepository = Injection.singleton(type: ContactsRepositoryImpl.self)
 
     lazy var contacts:Observable<[CNContact]> = {
         return wrapObservable(observable: contactsRepository.contacts)

@@ -9,10 +9,20 @@
 import XCTest
 @testable import Library
 
+private protocol TestProtocol : Injectable {
+    func test() -> String
+}
+
 class InjectableTests: XCTestCase {
 
     private final class TestInjectable: Injectable {
 
+    }
+
+    private final class TestProtocolImpl : TestProtocol {
+        func test() -> String {
+            return "test"
+        }
     }
     
     func testSingletonInjectable() {
@@ -38,7 +48,7 @@ class InjectableTests: XCTestCase {
 
     func testByIdVsNew() {
         let i1:TestInjectable = Injection.withId(id: "bla")
-        let i2:TestInjectable = Injection.singleton()
+        let i2:TestInjectable = Injection.new()
 
         XCTAssertFalse(i1 === i2)
     }
@@ -48,5 +58,23 @@ class InjectableTests: XCTestCase {
         let i2:TestInjectable = Injection.withId(id: "bla")
 
         XCTAssert(i1 === i2)
+    }
+
+    func testInjectProtocolSingleton() {
+        let i1:TestProtocol = Injection.singleton(type: TestProtocolImpl.self)
+        let i2:TestProtocol = Injection.singleton(type: TestProtocolImpl.self)
+        XCTAssert(i1 as! TestProtocolImpl === i2 as! TestProtocolImpl)
+    }
+
+    func testInjectProtocolId() {
+        let i1:TestProtocol = Injection.withId(id: "bla", type: TestProtocolImpl.self)
+        let i2:TestProtocol = Injection.withId(id: "bla", type: TestProtocolImpl.self)
+        XCTAssert(i1 as! TestProtocolImpl === i2 as! TestProtocolImpl)
+    }
+
+    func testInjectProtocolNew() {
+        let i1:TestProtocol = Injection.new(type: TestProtocolImpl.self)
+        let i2:TestProtocol = Injection.new(type: TestProtocolImpl.self)
+        XCTAssertFalse(i1 as! TestProtocolImpl === i2 as! TestProtocolImpl)
     }
 }

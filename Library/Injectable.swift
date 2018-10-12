@@ -15,16 +15,16 @@ public protocol Injectable {
 public enum Injection {
     private static var singletons:[String:Injectable] = [:]
     private static var ids:[String:Injectable] = [:]
-    public static func new<Type:Injectable>() -> Type {
-        return Type()
+    public static func new<Type:Injectable>(type:Type.Type = Type.self) -> Type {
+        return type.init()
     }
-    public static func singleton<Type:Injectable>() -> Type {
+    public static func singleton<Type:Injectable>(type:Type.Type = Type.self) -> Type {
         let key = String(describing: Type.self)
         let singleton:Type = singletons[key] as? Type ?? Type()
         singletons[key] = singleton
         return singleton
     }
-    public static func withId<Type:Injectable>(id:String) -> Type {
+    public static func withId<Type:Injectable>(id:String, type:Type.Type = Type.self) -> Type {
         let key = String(describing: Type.self)
         let finalId = key + id
         let ided = ids[finalId] as? Type ?? Type()

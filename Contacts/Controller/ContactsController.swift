@@ -10,7 +10,12 @@ import Foundation
 import Library
 import Contacts
 
-final class ContactsController: Injectable {
+protocol ContactsController : Injectable {
+    func fetchContacts() -> Result<[CNContact]>
+    func fetchGroups() -> Result<[CNGroup]>
+}
+
+final class ContactsControllerImpl: ContactsController {
     private let contactStore = CNContactStore()
 
     func fetchContacts() -> Result<[CNContact]> {

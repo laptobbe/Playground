@@ -7,8 +7,12 @@ import Foundation
 import Library
 import Contacts
 
-final class ContactsRepository : Injectable {
-    let contactsController:ContactsController = Injection.singleton()
+protocol ContactsRepository : Injectable {
+    var contacts:Observable<[CNContact]> { get }
+}
+
+final class ContactsRepositoryImpl : ContactsRepository {
+    var contactsController:ContactsController = Injection.singleton(type:ContactsControllerImpl.self)
 
     lazy var contacts:Observable<[CNContact]> = {
         let observer = Observable<[CNContact]>()
