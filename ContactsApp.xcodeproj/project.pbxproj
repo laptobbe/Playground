@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CC3C747D51651A7766F104E1 /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C78FA9CD2E3001E0141C4 /* ObservableTests.swift */; };
+		CC3C7670C9CA3F795DDC4543 /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C7C0EE327EA24CC4FF2DB /* ViewModelTests.swift */; };
 		CC3C7955171C6CA384FA9179 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C7D26C8B9891030F51479 /* ContactListViewController.swift */; };
 		CC3C7A73F6C729F8D7DD7ADC /* ContactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C7A6454B89BF710952651 /* ContactListViewModel.swift */; };
 		CC3C7F300CF747A5F969FA8E /* ContactsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C7AFD37B52808E70090C2 /* ContactsRepository.swift */; };
@@ -78,6 +79,7 @@
 		CC3C78FA9CD2E3001E0141C4 /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableTests.swift; sourceTree = "<group>"; };
 		CC3C7A6454B89BF710952651 /* ContactListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListViewModel.swift; sourceTree = "<group>"; };
 		CC3C7AFD37B52808E70090C2 /* ContactsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsRepository.swift; sourceTree = "<group>"; };
+		CC3C7C0EE327EA24CC4FF2DB /* ViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
 		CC3C7D26C8B9891030F51479 /* ContactListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		F621A2E1216FBEF8001EFC72 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		F621A2E3216FBF3C001EFC72 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				F6F353D1216BCC47005B4211 /* Info.plist */,
 				F621A2EB216FC0BC001EFC72 /* InjectableTests.swift */,
 				CC3C78FA9CD2E3001E0141C4 /* ObservableTests.swift */,
+				CC3C7C0EE327EA24CC4FF2DB /* ViewModelTests.swift */,
 			);
 			path = LibraryTests;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 			files = (
 				F621A2EC216FC0BC001EFC72 /* InjectableTests.swift in Sources */,
 				CC3C747D51651A7766F104E1 /* ObservableTests.swift in Sources */,
+				CC3C7670C9CA3F795DDC4543 /* ViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

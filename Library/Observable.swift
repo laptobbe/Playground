@@ -57,7 +57,7 @@ public class Observable<Type> {
     }
     
     @discardableResult
-    public func observe(observer:@escaping Observer, errorObserver: ErrorObserver? = nil) -> Unobserver {
+    public func observe(_ observer:@escaping Observer, errorObserver: ErrorObserver? = nil) -> Unobserver {
         let id = UUID.init().uuidString
         if let value = self.value {
             callbackQueue.async {

@@ -27,7 +27,7 @@ class ContactListViewController: UIViewController {
     }
 
     private func setupViewModel() {
-        viewModel.contacts.observe(observer: { (contacts) in
+        viewModel.contacts.observe({ (contacts) in
             self.dataSource.data = contacts
             self.tableView.reloadData()
         }, errorObserver: { error in

@@ -13,42 +13,62 @@ open class ViewModel : Injectable {
     required public init() {
         
     }
-    private var observations = [Unobserver]()
+    public private(set) var observations = [Unobserver]()
+
     public func remember(_ unobserver: Unobserver) {
         observations.append(unobserver)
     }
+
+    @discardableResult
     public func mapObservable<Type, NewType>(observable:Observable<Type>, mapper:@escaping (Type)->(NewType)) -> Observable<NewType> {
         let new = Observable<NewType>()
-        remember(observable.observe(observer: { (value) in
+        remember(observable.observe({ (value) in
             new.value = mapper(value)
+        }, errorObserver: { error in
+            new.error = error
         }))
         return new
     }
+
+    @discardableResult
     public func wrapObservable<Type>(observable:Observable<Type>) -> Observable<Type> {
         let new = Observable<Type>()
-        remember(observable.observe(observer: { (value) in
+        remember(observable.observe({ (value) in
             new.value = value
-        }))
+        }, errorObserver: { error in
+            new.error = error
+         }))
         return new
     }
-    
+
+    @discardableResult
     public func mergeObservables<A, B>(a:Observable<A>, b:Observable<B>) -> Observable<(A,B)> {
         let new = Observable<(A,B)>()
         func check() {
             if let a = a.value, let b = b.value {
                 new.value = (a, b)
             }
+            if let aError = a.error {
+                new.error = aError
+            }
+            if let bError = b.error {
+                new.error = bError
+            }
         }
-        remember(a.observe(observer: { _ in
+        remember(a.observe({ _ in
             if(new.value == nil) {
                 check()
             }
+        }, errorObserver: { error in
+            check()
         }))
-        remember(b.observe(observer: { _ in
+        remember(b.observe({ _ in
             if(new.value == nil) {
                 check()
             }
-        }))
+        }, errorObserver: { error in
+            check()
+         }))
         return new
     }
     

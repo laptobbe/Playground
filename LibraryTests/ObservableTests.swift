@@ -15,7 +15,7 @@ class ObservableTests : XCTestCase {
         let expectation = XCTestExpectation()
         let observable = Observable<Bool>()
 
-        observable.observe(observer: { (type: Bool) in
+        observable.observe({ (type: Bool) in
 
         }, errorObserver: { error in
             expectation.fulfill()
@@ -29,7 +29,7 @@ class ObservableTests : XCTestCase {
         let expectation = XCTestExpectation()
         let observable = Observable<Bool>()
 
-        observable.observe(observer: { (type: Bool) in
+        observable.observe({ (type: Bool) in
             expectation.fulfill()
         }, errorObserver: { error in
 
@@ -44,7 +44,7 @@ class ObservableTests : XCTestCase {
         expectation.expectedFulfillmentCount = 2
         let observable = Observable<Bool>()
 
-        observable.observe(observer: { (type: Bool) in
+        observable.observe({ (type: Bool) in
             expectation.fulfill()
         }, errorObserver: { error in
 
@@ -60,7 +60,7 @@ class ObservableTests : XCTestCase {
         expectation.expectedFulfillmentCount = 2
         let observable = Observable<Bool>()
 
-        observable.observe(observer: { (type: Bool) in
+        observable.observe({ (type: Bool) in
             expectation.fulfill()
         }, errorObserver: { error in
 
@@ -76,7 +76,7 @@ class ObservableTests : XCTestCase {
         expectation.expectedFulfillmentCount = 2
         let observable = Observable<Bool>()
 
-        observable.observe(observer: { (type: Bool) in
+        observable.observe({ (type: Bool) in
 
         }, errorObserver: { error in
             expectation.fulfill()
@@ -93,7 +93,7 @@ class ObservableTests : XCTestCase {
 
         let observable = Observable<Bool>()
 
-        observable.observe(observer: { (type: Bool) in
+        observable.observe({ (type: Bool) in
             valueExpectation.fulfill()
         }, errorObserver: { error in
             errorExpectation.fulfill()
@@ -109,7 +109,7 @@ class ObservableTests : XCTestCase {
 
         let observable = Observable<Bool>(value: true)
 
-        observable.observe(observer: { (type: Bool) in
+        observable.observe({ (type: Bool) in
             valueExpectation.fulfill()
         }, errorObserver: { error in
 
@@ -123,7 +123,7 @@ class ObservableTests : XCTestCase {
 
         let observable = Observable<Bool>(value: true)
         observable.value = false
-        observable.observe(observer: { (type: Bool) in
+        observable.observe({ (type: Bool) in
             if(type == false) {
                 valueExpectation.fulfill()
             }
