@@ -11,7 +11,6 @@ import Library
 import Contacts
 
 final class ContactsController: Injectable {
-    static var id: String = UUID().uuidString
     private let contactStore = CNContactStore()
 
     func fetchContacts() -> Result<[CNContact]> {

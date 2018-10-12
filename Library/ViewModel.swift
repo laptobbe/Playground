@@ -9,7 +9,6 @@
 import Foundation
 
 open class ViewModel : Injectable {
-    public static var id: String = UUID().uuidString
     required public init() {
         
     }

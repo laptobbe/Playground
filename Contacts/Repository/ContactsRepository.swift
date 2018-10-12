@@ -9,7 +9,6 @@ import Contacts
 
 final class ContactsRepository : Injectable {
     let contactsController:ContactsController = Injection.singleton()
-    static var id: String = UUID().uuidString
 
     lazy var contacts:Observable<[CNContact]> = {
         let observer = Observable<[CNContact]>()

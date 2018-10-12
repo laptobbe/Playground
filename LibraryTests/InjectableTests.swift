@@ -12,7 +12,7 @@ import XCTest
 class InjectableTests: XCTestCase {
 
     private final class TestInjectable: Injectable {
-        static var id: String = UUID().uuidString
+
     }
     
     func testSingletonInjectable() {

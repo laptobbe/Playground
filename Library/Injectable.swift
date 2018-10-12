@@ -10,7 +10,6 @@ import Foundation
 
 public protocol Injectable {
     init()
-    static var id:String { get }
 }
 
 public enum Injection {
@@ -20,12 +19,14 @@ public enum Injection {
         return Type()
     }
     public static func singleton<Type:Injectable>() -> Type {
-        let singleton:Type = singletons[Type.id] as? Type ?? Type()
-        singletons[Type.id] = singleton
+        let key = String(describing: Type.self)
+        let singleton:Type = singletons[key] as? Type ?? Type()
+        singletons[key] = singleton
         return singleton
     }
     public static func withId<Type:Injectable>(id:String) -> Type {
-        let finalId = Type.id + id
+        let key = String(describing: Type.self)
+        let finalId = key + id
         let ided = ids[finalId] as? Type ?? Type()
         ids[finalId] = ided
         return ided
