@@ -9,12 +9,13 @@
 import UIKit
 import Library
 import Contacts
+import ContactsUI
 
 class ContactListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     let viewModel:ContactListViewModel = Injection.new()
-    let dataSource = ContactsListTableViewSource()
+    private var dataSource:ContactsListTableViewSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,22 @@ class ContactListViewController: UIViewController {
         self.setupViewModel()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.deselectCurrent()
+    }
+
+    private func deselectCurrent() {
+        if let indexPath = self.tableView.indexPathForSelectedRow {
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+
     private func setupTableView() {
+        self.dataSource = ContactsListTableViewSource() { [weak self] contact in
+            let viewController = CNContactViewController(for: contact)
+            self?.navigationController?.show(viewController, sender: self)
+        }
         self.tableView.dataSource = dataSource
         self.tableView.delegate = dataSource
     }
@@ -35,17 +51,15 @@ class ContactListViewController: UIViewController {
             print(error)
         })
     }
-}
 
-class ContactsListTableViewSource : ArrayTableViewDataSource<CNContact> {
-    override func tableView(_ tableView: UITableView, cellForElement element: CNContact, atIndexPath indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = element.givenName
-        return cell
-    }
+    private class ContactsListTableViewSource : ArrayTableViewDataSource<CNContact> {
 
-    override func tableView(_ tableView: UITableView, didSelectElement element: CNContact, atIndexPath indexPath: IndexPath) {
-
+        override func tableView(_ tableView: UITableView, cellForElement element: CNContact, atIndexPath indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.textLabel?.text = element.givenName
+            return cell
+        }
     }
 }
+
 

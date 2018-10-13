@@ -10,8 +10,12 @@ import Foundation
 import UIKit
 
 open class ArrayTableViewDataSource<Element>: NSObject, UITableViewDataSource, UITableViewDelegate {
-    public init(data:[Element] = []) {
+    public typealias ArrayTableViewDataSourceDelegate = (Element)->()
+    let delegate:ArrayTableViewDataSourceDelegate?
+    
+    public init(data:[Element] = [], delegate:ArrayTableViewDataSourceDelegate? = nil) {
         self.data = data
+        self.delegate = delegate
         super.init()
     }
     
@@ -30,7 +34,7 @@ open class ArrayTableViewDataSource<Element>: NSObject, UITableViewDataSource, U
     }
 
     open func tableView(_ tableView:UITableView, didSelectElement element:Element, atIndexPath indexPath:IndexPath) {
-        fatalError("Needs to be overwritten")
+        self.delegate?(element)
     }
 
     open func tableView(_ tableView:UITableView, cellForElement element:Element, atIndexPath indexPath:IndexPath) -> UITableViewCell {

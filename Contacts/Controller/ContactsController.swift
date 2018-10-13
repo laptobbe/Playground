@@ -9,6 +9,7 @@
 import Foundation
 import Library
 import Contacts
+import ContactsUI
 
 protocol ContactsController : Injectable {
     func fetchContacts() -> Result<[CNContact]>
@@ -19,7 +20,7 @@ final class ContactsControllerImpl: ContactsController {
     private let contactStore = CNContactStore()
 
     func fetchContacts() -> Result<[CNContact]> {
-        let keys = [CNContact.descriptorForAllComparatorKeys()]
+        let keys = [CNContact.descriptorForAllComparatorKeys(), CNContactViewController.descriptorForRequiredKeys()]
         let request = CNContactFetchRequest(keysToFetch: keys)
         var contacts = [CNContact]()
         do {
