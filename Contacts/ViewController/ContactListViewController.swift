@@ -14,7 +14,7 @@ import ContactsUI
 class ContactListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
-    let viewModel:ContactListViewModel = Injection.new()
+    private let viewModel:ContactListViewModel = Injection.new()
     private var dataSource:ContactsListTableViewSource!
     
     override func viewDidLoad() {
@@ -35,7 +35,7 @@ class ContactListViewController: UIViewController {
     }
 
     private func setupTableView() {
-        self.dataSource = ContactsListTableViewSource() { [weak self] contact in
+        self.dataSource = ContactsListTableViewSource(cellIdentifier: "cell") { [weak self] contact in
             let viewController = CNContactViewController(for: contact)
             self?.navigationController?.show(viewController, sender: self)
         }
@@ -52,14 +52,7 @@ class ContactListViewController: UIViewController {
         })
     }
 
-    private class ContactsListTableViewSource : ArrayTableViewDataSource<CNContact> {
 
-        override func tableView(_ tableView: UITableView, cellForElement element: CNContact, atIndexPath indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = element.givenName
-            return cell
-        }
-    }
 }
 
 

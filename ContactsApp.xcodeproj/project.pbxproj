@@ -14,6 +14,7 @@
 		CC3C7955171C6CA384FA9179 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C7D26C8B9891030F51479 /* ContactListViewController.swift */; };
 		CC3C7A73F6C729F8D7DD7ADC /* ContactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C7A6454B89BF710952651 /* ContactListViewModel.swift */; };
 		CC3C7B9201B53AFBD34207E5 /* ContactGroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C77682B61245C8FEE9F86 /* ContactGroupListViewController.swift */; };
+		CC3C7ECBFEA35E4205E6DD4A /* ContactsListTableViewSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C71D3F061CE5F41F49F1C /* ContactsListTableViewSource.swift */; };
 		CC3C7F300CF747A5F969FA8E /* ContactsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C7AFD37B52808E70090C2 /* ContactsRepository.swift */; };
 		F621A2E2216FBEF8001EFC72 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621A2E1216FBEF8001EFC72 /* ViewModel.swift */; };
 		F621A2E4216FBF3C001EFC72 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621A2E3216FBF3C001EFC72 /* Result.swift */; };
@@ -79,6 +80,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CC3C71D3F061CE5F41F49F1C /* ContactsListTableViewSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsListTableViewSource.swift; sourceTree = "<group>"; };
 		CC3C772E61D9DED8DA4484FC /* GroupsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsRepository.swift; sourceTree = "<group>"; };
 		CC3C77682B61245C8FEE9F86 /* ContactGroupListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactGroupListViewController.swift; sourceTree = "<group>"; };
 		CC3C78FA9CD2E3001E0141C4 /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableTests.swift; sourceTree = "<group>"; };
@@ -162,6 +164,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		CC3C78C629E7E4400F9A2371 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				CC3C71D3F061CE5F41F49F1C /* ContactsListTableViewSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
 		CC3C7CD59AB754B374456724 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +215,7 @@
 				CC3C7CD59AB754B374456724 /* Repository */,
 				CC3C7395C39FA87B143ABB92 /* ViewModel */,
 				CC3C730D6323474DCDF1FCA1 /* ViewController */,
+				CC3C78C629E7E4400F9A2371 /* DataSource */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -433,6 +444,7 @@
 				CC3C7B9201B53AFBD34207E5 /* ContactGroupListViewController.swift in Sources */,
 				CC3C7711F9663A1CFE9ACBB8 /* ContactGroupListViewModel.swift in Sources */,
 				CC3C7668438F409FAF39A747 /* GroupsRepository.swift in Sources */,
+				CC3C7ECBFEA35E4205E6DD4A /* ContactsListTableViewSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
