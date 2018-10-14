@@ -9,16 +9,19 @@ import Contacts
 
 protocol ContactsRepository : Injectable {
     var contacts:Observable<[CNContact]> { get }
+    func contacts(group:CNGroup) -> Observable<[CNContact]>
 }
 
 final class ContactsRepositoryImpl : ContactsRepository {
-    var contactsController:ContactsController = Injection.singleton(type:ContactsControllerImpl.self)
+    let contactsController:ContactsController = Injection.singleton(type:ContactsControllerImpl.self)
 
-    lazy var contacts:Observable<[CNContact]> = {
+    private var groupObservables:[CNGroup:Observable<[CNContact]>] = [:]
+
+    private func contactsRequestObserver(fetcher: @escaping ()->(Result<[CNContact]>)) -> Observable<[CNContact]> {
         let observer = Observable<[CNContact]>()
         func fetch() {
             DispatchQueue.global().async {
-                let result = self.contactsController.fetchContacts()
+                let result = fetcher()
                 switch(result) {
                 case .success(let contacts):
                     observer.value = contacts
@@ -33,6 +36,15 @@ final class ContactsRepositoryImpl : ContactsRepository {
             fetch()
         }
         return observer
+    }
+
+    lazy var contacts:Observable<[CNContact]> = {
+        return self.contactsRequestObserver { self.contactsController.fetchContacts() }
     }()
 
+    func contacts(group:CNGroup) -> Observable<[CNContact]> {
+        let observable = groupObservables[group] ?? self.contactsRequestObserver { self.contactsController.fetchContacts(group: group) }
+        groupObservables[group] = observable
+        return observable
+    }
 }

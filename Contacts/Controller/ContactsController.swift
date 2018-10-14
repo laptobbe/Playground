@@ -13,15 +13,19 @@ import ContactsUI
 
 protocol ContactsController : Injectable {
     func fetchContacts() -> Result<[CNContact]>
+    func fetchContacts(group:CNGroup) -> Result<[CNContact]>
     func fetchGroups() -> Result<[CNGroup]>
 }
 
 final class ContactsControllerImpl: ContactsController {
     private let contactStore = CNContactStore()
 
-    func fetchContacts() -> Result<[CNContact]> {
+    private func _fetchContacts(group:CNGroup? = nil) -> Result<[CNContact]> {
         let keys = [CNContact.descriptorForAllComparatorKeys(), CNContactViewController.descriptorForRequiredKeys()]
         let request = CNContactFetchRequest(keysToFetch: keys)
+        if let group = group {
+            request.predicate = CNContact.predicateForContactsInGroup(withIdentifier: group.identifier)
+        }
         var contacts = [CNContact]()
         do {
             try contactStore.enumerateContacts(with: request) { contact, pointer in
@@ -40,5 +44,13 @@ final class ContactsControllerImpl: ContactsController {
             return Result.error(error)
         }
 
+    }
+
+    func fetchContacts() -> Result<[CNContact]> {
+        return _fetchContacts()
+    }
+
+    func fetchContacts(group: CNGroup) -> Result<[CNContact]> {
+        return _fetchContacts(group: group)
     }
 }

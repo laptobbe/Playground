@@ -17,6 +17,7 @@ class ContactsListTableViewSource : ArrayTableViewDataSource<CNContact> {
 
     override func tableView(_ tableView: UITableView, cellForElement element: CNContact, atIndexPath indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         cell.textLabel?.text = element.givenName
         return cell
     }

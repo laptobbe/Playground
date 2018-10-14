@@ -21,9 +21,20 @@ class ContactGroupListViewController : UIViewController {
         self.setupViewModel()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.deselectCurrent()
+    }
+
+    private func deselectCurrent() {
+        if let indexPath = self.tableView.indexPathForSelectedRow {
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+
     private func setupTableView() {
         self.dataSource = GroupsTableViewSource(delegate: { (group) in
-            
+            self.performSegue(withIdentifier: "group", sender: group)
         })
         self.tableView.delegate = self.dataSource
         self.tableView.dataSource = self.dataSource
@@ -36,6 +47,12 @@ class ContactGroupListViewController : UIViewController {
         }, errorObserver: { error in
 
         })
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? ContactGroupViewController, let group = sender as? CNGroup {
+            destination.group = group
+        }
     }
 
     private class GroupsTableViewSource : ArrayTableViewDataSource<CNGroup> {
