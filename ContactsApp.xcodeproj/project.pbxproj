@@ -18,6 +18,7 @@
 		CC3C7B9201B53AFBD34207E5 /* ContactGroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C77682B61245C8FEE9F86 /* ContactGroupListViewController.swift */; };
 		CC3C7ECBFEA35E4205E6DD4A /* ContactsListTableViewSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C71D3F061CE5F41F49F1C /* ContactsListTableViewSource.swift */; };
 		CC3C7F300CF747A5F969FA8E /* ContactsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C7AFD37B52808E70090C2 /* ContactsRepository.swift */; };
+		CC3C7FFA03ADC05F20C251E4 /* ViewModelKVOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C703A4F45349F945869F0 /* ViewModelKVOTests.swift */; };
 		F621A2E2216FBEF8001EFC72 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621A2E1216FBEF8001EFC72 /* ViewModel.swift */; };
 		F621A2E4216FBF3C001EFC72 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621A2E3216FBF3C001EFC72 /* Result.swift */; };
 		F621A2E6216FBF5A001EFC72 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621A2E5216FBF5A001EFC72 /* Observable.swift */; };
@@ -82,6 +83,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CC3C703A4F45349F945869F0 /* ViewModelKVOTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelKVOTests.swift; sourceTree = "<group>"; };
 		CC3C71D3F061CE5F41F49F1C /* ContactsListTableViewSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsListTableViewSource.swift; sourceTree = "<group>"; };
 		CC3C772E61D9DED8DA4484FC /* GroupsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsRepository.swift; sourceTree = "<group>"; };
 		CC3C77682B61245C8FEE9F86 /* ContactGroupListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactGroupListViewController.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				F621A2EB216FC0BC001EFC72 /* InjectableTests.swift */,
 				CC3C78FA9CD2E3001E0141C4 /* ObservableTests.swift */,
 				CC3C7C0EE327EA24CC4FF2DB /* ViewModelTests.swift */,
+				CC3C703A4F45349F945869F0 /* ViewModelKVOTests.swift */,
 			);
 			path = LibraryTests;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				F621A2EC216FC0BC001EFC72 /* InjectableTests.swift in Sources */,
 				CC3C747D51651A7766F104E1 /* ObservableTests.swift in Sources */,
 				CC3C7670C9CA3F795DDC4543 /* ViewModelTests.swift in Sources */,
+				CC3C7FFA03ADC05F20C251E4 /* ViewModelKVOTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
