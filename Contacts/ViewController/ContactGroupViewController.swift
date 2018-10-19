@@ -14,6 +14,7 @@ class ContactGroupViewController : UIViewController {
     private var dataSource:ContactsListTableViewSource!
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var editButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,16 @@ class ContactGroupViewController : UIViewController {
 
     private func setupTitle() {
         self.title = self.group.name
+    }
+
+    open override var isEditing: Bool {
+        didSet {
+            if (isEditing) {
+                self.editButton.title = "Done"
+            } else {
+                self.editButton.title = "Edit"
+            }
+        }
     }
 
     private func setupViewModel() {
@@ -41,7 +52,15 @@ class ContactGroupViewController : UIViewController {
 
         }
     }
-
+    
+    @IBAction func editButtonPressed(_ sender: Any) {
+        self.isEditing = true
+    }
+    
+    @IBAction func actionButtonPressed(_ sender: Any) {
+        
+    }
+    
     private func setupTableView() {
         self.tableView.delegate = self.dataSource
         self.tableView.dataSource = self.dataSource

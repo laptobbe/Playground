@@ -127,7 +127,7 @@
             </objects>
             <point key="canvasLocation" x="25" y="-325"/>
         </scene>
-        <!--Contact Group View Controller-->
+        <!--Title-->
         <scene sceneID="XHB-w7-gYu">
             <objects>
                 <viewController id="DqM-zL-R4s" customClass="ContactGroupViewController" customModule="ContactsApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -168,7 +168,22 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jga-jK-pAb"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="Eye-vh-giE">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="action" id="oMe-Di-BN5">
+                                <connections>
+                                    <action selector="actionButtonPressed:" destination="DqM-zL-R4s" id="1hh-m4-cbW"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="edit" id="iiZ-ji-KWQ">
+                                <connections>
+                                    <action selector="editButtonPressed:" destination="DqM-zL-R4s" id="YFL-h9-rBP"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
+                        <outlet property="editButton" destination="iiZ-ji-KWQ" id="xBC-uh-IrL"/>
                         <outlet property="tableView" destination="uEc-Z3-JJp" id="QgO-8d-eEW"/>
                     </connections>
                 </viewController>

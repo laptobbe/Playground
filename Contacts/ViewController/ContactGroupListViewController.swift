@@ -59,6 +59,7 @@ class ContactGroupListViewController : UIViewController {
         override func tableView(_ tableView: UITableView, cellForElement element: CNGroup, atIndexPath indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.text = element.name
+            cell.accessoryType = .disclosureIndicator
             return cell
         }
     }
