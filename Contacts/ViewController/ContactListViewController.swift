@@ -15,7 +15,10 @@ class ContactListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     private let viewModel:ContactListViewModel = Injection.new()
-    private var dataSource:ContactsListTableViewSource!
+    private lazy var dataSource = ArrayTableViewDataSource<CNContact, UITableViewCell, CNContactViewModel>() { [weak self] contact in
+        let viewController = CNContactViewController(for: contact.model)
+        self?.navigationController?.show(viewController, sender: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,17 +38,13 @@ class ContactListViewController: UIViewController {
     }
 
     private func setupTableView() {
-        self.dataSource = ContactsListTableViewSource(cellIdentifier: "cell") { [weak self] contact in
-            let viewController = CNContactViewController(for: contact)
-            self?.navigationController?.show(viewController, sender: self)
-        }
         self.tableView.dataSource = dataSource
         self.tableView.delegate = dataSource
     }
 
     private func setupViewModel() {
         viewModel.contacts.observe({ (contacts) in
-            self.dataSource.data = contacts
+            self.dataSource.data = contacts.map({CNContactViewModel(identifier: "cell", model: $0)})
             self.tableView.reloadData()
         }, errorObserver: { error in
             print(error)

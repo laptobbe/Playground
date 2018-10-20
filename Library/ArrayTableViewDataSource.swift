@@ -8,18 +8,18 @@
 
 import Foundation
 import UIKit
-
-open class ArrayTableViewDataSource<Element>: NSObject, UITableViewDataSource, UITableViewDelegate {
-    public typealias ArrayTableViewDataSourceDelegate = (Element)->()
+ 
+open class ArrayTableViewDataSource<Model, Cell:UITableViewCell, CellViewModel:TableViewCellViewModel<Model, Cell>>: NSObject, UITableViewDataSource, UITableViewDelegate {
+    public typealias ArrayTableViewDataSourceDelegate = (CellViewModel)->()
     let delegate:ArrayTableViewDataSourceDelegate?
     
-    public init(data:[Element] = [], delegate:ArrayTableViewDataSourceDelegate? = nil) {
+    public init(data:[CellViewModel] = [], delegate:ArrayTableViewDataSourceDelegate? = nil) {
         self.data = data
         self.delegate = delegate
         super.init()
     }
     
-    public var data:[Element]
+    public var data:[CellViewModel]
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
@@ -33,12 +33,12 @@ open class ArrayTableViewDataSource<Element>: NSObject, UITableViewDataSource, U
         self.tableView(tableView, didSelectElement:data[indexPath.row], atIndexPath:indexPath)
     }
 
-    open func tableView(_ tableView:UITableView, didSelectElement element:Element, atIndexPath indexPath:IndexPath) {
+    public func tableView(_ tableView:UITableView, didSelectElement element:CellViewModel, atIndexPath indexPath:IndexPath) {
         self.delegate?(element)
     }
 
-    open func tableView(_ tableView:UITableView, cellForElement element:Element, atIndexPath indexPath:IndexPath) -> UITableViewCell {
-        fatalError("Needs to be overwritten")
+    public func tableView(_ tableView:UITableView, cellForElement element:CellViewModel, atIndexPath indexPath:IndexPath) -> Cell {
+        return element.tableView(tableView: tableView, cellForRowAtIndexPath: indexPath)
     }
 }
 

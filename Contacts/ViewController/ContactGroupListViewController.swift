@@ -12,7 +12,10 @@ class ContactGroupListViewController : UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    private var dataSource:GroupsTableViewSource!
+    private lazy var dataSource = ArrayTableViewDataSource<CNGroup, UITableViewCell, CNGroupViewModel>() { [weak self] (group) in
+        self?.performSegue(withIdentifier: "group", sender: group)
+    }
+
     private let viewModel:ContactGroupListViewModel = Injection.singleton()
     
     override func viewDidLoad() {
@@ -33,16 +36,13 @@ class ContactGroupListViewController : UIViewController {
     }
 
     private func setupTableView() {
-        self.dataSource = GroupsTableViewSource(delegate: { (group) in
-            self.performSegue(withIdentifier: "group", sender: group)
-        })
         self.tableView.delegate = self.dataSource
         self.tableView.dataSource = self.dataSource
     }
 
     private func setupViewModel() {
-        viewModel.groups.observe({ (type: [CNGroup]) in
-            self.dataSource.data = type
+        viewModel.groups.observe({ (groups: [CNGroup]) in
+            self.dataSource.data = groups.map({CNGroupViewModel(identifier: "cell", model: $0)})
             self.tableView.reloadData()
         }, errorObserver: { error in
 
@@ -55,12 +55,4 @@ class ContactGroupListViewController : UIViewController {
         }
     }
 
-    private class GroupsTableViewSource : ArrayTableViewDataSource<CNGroup> {
-        override func tableView(_ tableView: UITableView, cellForElement element: CNGroup, atIndexPath indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = element.name
-            cell.accessoryType = .disclosureIndicator
-            return cell
-        }
-    }
 }

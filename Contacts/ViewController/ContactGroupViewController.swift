@@ -11,7 +11,9 @@ import Contacts
 class ContactGroupViewController : UIViewController {
     var group:CNGroup!
     private let viewModel:ContactGroupViewModel = Injection.new()
-    private var dataSource:ContactsListTableViewSource!
+    private lazy var dataSource = ArrayTableViewDataSource<CNContact, UITableViewCell, CNContactViewModel>() { [weak self] person in
+
+    }
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editButton: UIBarButtonItem!
@@ -20,7 +22,6 @@ class ContactGroupViewController : UIViewController {
         super.viewDidLoad()
         self.setupTitle()
         self.setupViewModel()
-        self.setupDataSource()
         self.setupTableView()
     }
 
@@ -41,18 +42,12 @@ class ContactGroupViewController : UIViewController {
     private func setupViewModel() {
         viewModel.group = self.group
         viewModel.contacts.observe({ (contacts: [CNContact]) in
-            self.dataSource.data = contacts
+            self.dataSource.data = contacts.map({CNContactViewModel(identifier: "cell", model: $0)})
         }, errorObserver: { error in
 
         })
     }
 
-    private func setupDataSource() {
-        self.dataSource = ContactsListTableViewSource(cellIdentifier: "cell") { person in
-
-        }
-    }
-    
     @IBAction func editButtonPressed(_ sender: Any) {
         self.isEditing = true
     }
